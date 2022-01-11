@@ -1,4 +1,4 @@
-<script>window.demoVersion = '2019.02.20';</script>
+<script>window.demoVersion = '2022.01.13';</script>
 
 <!--
 > Muaz Khan     - www.MuazKhan.com
@@ -130,16 +130,14 @@
     <article>
         <header style="text-align: center;">
             <h1>
-                getStats.js Demo | WebRTC getStats API
+                视频会议系统网络质量测量评估测试
             </h1>
             <p>
                 <a href="https://www.webrtc-experiment.com/">HOME</a>
                 <span> &copy; </span>
-                <a href="http://www.MuazKhan.com/" target="_blank">Muaz Khan</a> .
-                <a href="http://twitter.com/WebRTCWeb" target="_blank" title="Twitter profile for WebRTC Experiments">@WebRTCWeb</a> .
-                <a href="https://github.com/muaz-khan?tab=repositories" target="_blank" title="Github Profile">Github</a> .
-                <a href="https://github.com/muaz-khan/getStats/issues?state=open" target="_blank">Latest issues</a> .
-                <a href="https://github.com/muaz-khan/getStats/commits/master" target="_blank">What's New?</a>
+                <a href="https://github.com/huge0128?tab=repositories" target="_blank">@IPLab 703 Github</a> .
+                <a href="http://localhost:81/#/" target="_blank">manage system</a> .
+                <a href="https://github.com/huge0128/project_webrtc/commits/master" target="_blank">What's New?</a>
             </p>
         </header>
 
@@ -151,7 +149,7 @@
         </section>
 
         <div style="text-align: center; margin-bottom: 20px;">
-            <button id="btn-stop" disabled>Stop Camera & getStats</button>
+            <button id="btn-stop" disabled>关闭摄像头并停止状态获取</button>
             <select id="select-iceTransportPolicy">
                 <option value="all">STUN+TURN</option>
                 <option value="relay">TURN Only</option>
@@ -178,7 +176,7 @@
             <tbody>
                 <tr class="firefox-allowed chrome-allowed">
                     <td>
-                        Videos
+                        视频流
                     </td>
                     <td>
                         <video id="peer2-to-peer1" autoplay playsinilne controls muted volume=0></video>
@@ -189,9 +187,9 @@
                 </tr>
 
                 <tr class="firefox-allowed chrome-allowed">
-                    <td>Bandwidth Speed</td>
-                    <td><span id="peer1-bandwidthSpeed"></span> per second</td>
-                    <td><span id="peer2-bandwidthSpeed"></span> per second</td>
+                    <td>带宽速率</td>
+                    <td><span id="peer1-bandwidthSpeed"></span>/s</td>
+                    <td><span id="peer2-bandwidthSpeed"></span>/s</td>
                 </tr>
 
                 <tr class="firefox-allowed chrome-allowed">
@@ -207,56 +205,56 @@
                 </tr>
 
                 <tr class="firefox-not-allowed chrome-allowed">
-                    <td>Codecs</td>
+                    <td>编码方式</td>
                     <td>
-                        <label>Send:</label> <span id="peer1-codecsSend"></span><br>
-                        <label>Recv:</label> <span id="peer1-codecsRecv"></span><br>
+                        <label>发送:</label> <span id="peer1-codecsSend"></span><br>
+                        <label>接收:</label> <span id="peer1-codecsRecv"></span><br>
                     </td>
                     <td>
-                        <label>Send:</label> <span id="peer2-codecsSend"></span><br>
-                        <label>Recv:</label> <span id="peer2-codecsRecv"></span><br>
+                        <label>发送:</label> <span id="peer2-codecsSend"></span><br>
+                        <label>接收:</label> <span id="peer2-codecsRecv"></span><br>
                     </td>
                 </tr>
 
                 <tr class="firefox-not-allowed chrome-allowed">
-                    <td>Encryption</td>
+                    <td>加密方式</td>
                     <td><span id="peer1-encryptedAs"></span></td>
                     <td><span id="peer2-encryptedAs"></span></td>
                 </tr>
 
                 <tr class="firefox-allowed chrome-allowed">
-                    <td>IP Address</td>
+                    <td>IP地址</td>
                     <td>
-                        <label>Send:</label> <span id="peer1-externalIPAddressLocal"></span><br>
-                        <label>Recv:</label> <span id="peer1-externalIPAddressRemote"></span>
+                        <label>发送方:</label> <span id="peer1-externalIPAddressLocal"></span><br>
+                        <label>接收方:</label> <span id="peer1-externalIPAddressRemote"></span>
                     </td>
                     <td>
-                        <label>Send:</label> <span id="peer2-externalIPAddressLocal"></span><br>
-                        <label>Recv:</label> <span id="peer2-externalIPAddressRemote"></span>
+                        <label>发送方:</label> <span id="peer2-externalIPAddressLocal"></span><br>
+                        <label>接收方:</label> <span id="peer2-externalIPAddressRemote"></span>
                     </td>
                 </tr>
 
                 <tr class="firefox-not-allowed chrome-allowed">
-                    <td>Resolutions</td>
+                    <td>分辨率</td>
                     <td>
-                        <label>Send:</label> <span id="peer1-videoResolutionsForSenders"></span><br>
-                        <label>Recv:</label> <span id="peer1-videoResolutionsForReceivers"></span>
+                        <label>发送:</label> <span id="peer1-videoResolutionsForSenders"></span><br>
+                        <label>接收:</label> <span id="peer1-videoResolutionsForReceivers"></span>
                     </td>
                     <td>
-                        <label>Send:</label> <span id="peer2-videoResolutionsForSenders"></span><br>
-                        <label>Recv:</label> <span id="peer2-videoResolutionsForReceivers"></span>
+                        <label>发送:</label> <span id="peer2-videoResolutionsForSenders"></span><br>
+                        <label>接收:</label> <span id="peer2-videoResolutionsForReceivers"></span>
                     </td>
                 </tr>
 
                 <tr class="firefox-allowed chrome-allowed">
-                    <td>Data</td>
+                    <td>数据量</td>
                     <td>
-                        <label>Send:</label> <span id="peer1-totalDataForSenders"></span><br>
-                        <label>Recv:</label> <span id="peer1-totalDataForReceivers"></span>
+                        <label>已发送:</label> <span id="peer1-totalDataForSenders"></span><br>
+                        <label>已接收:</label> <span id="peer1-totalDataForReceivers"></span>
                     </td>
                     <td>
-                        <label>Send:</label> <span id="peer2-totalDataForSenders"></span><br>
-                        <label>Recv:</label> <span id="peer2-totalDataForReceivers"></span>
+                        <label>已发送:</label> <span id="peer2-totalDataForSenders"></span><br>
+                        <label>已接收:</label> <span id="peer2-totalDataForReceivers"></span>
                     </td>
                 </tr>
 
@@ -281,26 +279,26 @@
                 </tr>
 
                 <tr class="firefox-not-allowed chrome-allowed">
-                    <td>latency</td>
+                    <td>时延</td>
                     <td>
-                        <label>Audio:</label> <span id="peer1-audio-latency"></span><br>
-                        <label>Video:</label> <span id="peer1-video-latency"></span>
+                        <label>音频流:</label> <span id="peer1-audio-latency"></span><br>
+                        <label>视频流:</label> <span id="peer1-video-latency"></span>
                     </td>
                     <td>
-                        <label>Audio:</label> <span id="peer2-audio-latency"></span><br>
-                        <label>Video:</label> <span id="peer2-video-latency"></span>
+                        <label>音频流:</label> <span id="peer2-audio-latency"></span><br>
+                        <label>视频流:</label> <span id="peer2-video-latency"></span>
                     </td>
                 </tr>
 
                 <tr class="firefox-not-allowed chrome-allowed">
-                    <td>packetsLost</td>
+                    <td>丢包率</td>
                     <td>
-                        <label>Audio:</label> <span id="peer1-audio-packetsLost"></span><br>
-                        <label>Video:</label> <span id="peer1-video-packetsLost"></span>
+                        <label>音频流:</label> <span id="peer1-audio-packetsLost"></span><br>
+                        <label>视频流:</label> <span id="peer1-video-packetsLost"></span>
                     </td>
                     <td>
-                        <label>Audio:</label> <span id="peer2-audio-packetsLost"></span><br>
-                        <label>Video:</label> <span id="peer2-video-packetsLost"></span>
+                        <label>音频流:</label> <span id="peer2-audio-packetsLost"></span><br>
+                        <label>视频流:</label> <span id="peer2-video-packetsLost"></span>
                     </td>
                 </tr>
             </tbody>
@@ -681,29 +679,29 @@
                 }
             </script>
 
-        <section>
+        <!-- <section>
             <h2 class="header" id="updates" style="color: red; padding-bottom: .1em;"><a href="https://github.com/muaz-khan/getStats/issues" target="_blank">getStats Issues</a>
             </h2>
             <div id="github-issues"></div>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
             <h2 class="header" id="feedback">Feedback</h2>
             <div>
                 <textarea id="message" style="border: 1px solid rgb(189, 189, 189); height: 8em; margin: .2em; outline: none; resize: vertical; width: 98%;" placeholder="Have any message? Suggestions or something went wrong?"></textarea>
             </div>
             <button id="send-message" style="font-size: 1em;">Send Message</button>
             <small style="margin-left: 1em;">Enter your email too; if you want "direct" reply!</small>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
             <h2 class="header" id="updates" style="color: red; padding-bottom: .1em;"><a href="https://github.com/muaz-khan/getStats/commits/master" target="_blank">Latest Updates</a>
             </h2>
             <div id="github-commits"></div>
-        </section>
+        </section> -->
     </article>
 
-    <a href="https://github.com/muaz-khan/getStats" class="fork-left"></a>
+    <a href="https://github.com/huge0128/project_webrtc" class="fork-left"></a>
 
     <footer>
         <p>
@@ -713,10 +711,10 @@
     </footer>
 
     <!-- commits.js is useless for you! -->
-    <script>
+    <!-- <script>
         window.useThisGithubPath = 'muaz-khan/getStats';
     </script>
-    <script src="https://www.webrtc-experiment.com/commits.js" async></script>
+    <script src="https://www.webrtc-experiment.com/commits.js" async></script> -->
 </body>
 
 </html>
